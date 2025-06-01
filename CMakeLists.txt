@@ -8,4 +8,6 @@ add_executable(SUKP main.cpp
         load.h
         solver.cpp
         solver.h
+        solution.cpp
+        solution.h
 )

@@ -14,14 +14,13 @@ vector<int> solver::ranking_by_score(vector<unordered_set<int>> &relation, vecto
     for (int i = 0; i < m; i++) {
         unselected_items.insert(i);
     }
-    cout << "check1 " << endl;
     while (!unselected_items.empty()) {
         pair<int, double> next = {m + 1, 0};
         for (int const &item : unselected_items) {
-            int sum = 0;
+            float sum = 0.00001;
             for (int const &w : relation[item]) {
 //                cout << "weight " << weight[w] << endl;
-                if (!selected_elements.count(w)) sum += weight[w];
+                if (!selected_elements.count(w)) sum += (float)weight[w];
             }
             double current = (double)profit[item] / sum;
             if (current > next.second) {
@@ -41,7 +40,6 @@ int solver::calculate_after_ranking_result(vector<int> &rank_by_score, int &c, v
     int i = 0;
     int wsum = 0;
     unordered_set<int> selected_elements;
-    cout << "check2 " << endl;
     while (wsum <= c) {
         for (auto const &j : relation[rank_by_score[i]]) {
             if (!selected_elements.count(j)) {

@@ -47,24 +47,28 @@ void load::load_instance(vector<string> &instance_names, std::string &instance_n
     }
 }
 
-void load::read_input(const std::string &instance_name, int &m, int &n, int &c, vector<int> &profit, vector<int> &weight, vector<unordered_set<int>> &relation) {
+void
+load::read_input(const std::string &instance_name, int &m, int &n, int &c, vector<int> &profit, vector<int> &weight,
+                 vector<unordered_set<int>> &relation) {
     ifstream ifs(instance_name);
+    constexpr size_t buffer_size = 512 * 1024;
+    unique_ptr<char[]> buffer(new char[buffer_size]);
     if (!ifs.is_open()) {
         cerr << "Error: Unable to open file " << instance_name << endl;
         return;
     }
     string word;
     // get m, n, c
-    while (ifs >> word && (!m||!n||!c)) {
-        if (word.substr(0,2) == "m=") {
+    while (ifs >> word && (!m || !n || !c)) {
+        if (word.substr(0, 2) == "m=") {
             stringstream ss(word.substr(2));
             ss >> m;
             cout << "m=" << m << endl;
         } else if (word.substr(0, 2) == "n=") {
-            stringstream  ss(word.substr(2));
+            stringstream ss(word.substr(2));
             ss >> n;
             cout << "n=" << n << endl;
-        } else if (word.substr(0,5) == "size=") {
+        } else if (word.substr(0, 5) == "size=") {
             stringstream ss(word.substr(5));
             ss >> c;
             cout << "c=" << c << endl;
@@ -74,10 +78,10 @@ void load::read_input(const std::string &instance_name, int &m, int &n, int &c, 
     profit.assign(m, 0);
     weight.assign(n, 0);
     // get items
-    while(ifs >> word) {
+    while (ifs >> word) {
         if (word == "items") break;
     }
-    for (int i = 0; i < m; i ++) {
+    for (int i = 0; i < m; i++) {
         ifs >> word;
         profit[i] = stoi(word);
     }
@@ -91,15 +95,14 @@ void load::read_input(const std::string &instance_name, int &m, int &n, int &c, 
     }
     // get relation matrix
     while (ifs >> word) {
-        if (word == "matix") break;
+        if (word == "matrix") break;
     }
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             ifs >> word;
-            cout << word << " ";
             if (word == "1") relation[i].insert(j);
         }
-        cout << endl;
     }
+
     ifs.close();
 }

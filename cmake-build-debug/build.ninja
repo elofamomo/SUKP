@@ -67,6 +67,12 @@ build CMakeFiles/SUKP.dir/solver.cpp.obj: CXX_COMPILER__SUKP_unscanned_Debug D$:
   OBJECT_DIR = CMakeFiles\SUKP.dir
   OBJECT_FILE_DIR = CMakeFiles\SUKP.dir
 
+build CMakeFiles/SUKP.dir/solution.cpp.obj: CXX_COMPILER__SUKP_unscanned_Debug D$:/WeeklyReport-ThayDong/SUKP/solution.cpp || cmake_object_order_depends_target_SUKP
+  DEP_FILE = CMakeFiles\SUKP.dir\solution.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\SUKP.dir
+  OBJECT_FILE_DIR = CMakeFiles\SUKP.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SUKP
@@ -75,7 +81,7 @@ build CMakeFiles/SUKP.dir/solver.cpp.obj: CXX_COMPILER__SUKP_unscanned_Debug D$:
 #############################################
 # Link the executable SUKP.exe
 
-build SUKP.exe: CXX_EXECUTABLE_LINKER__SUKP_Debug CMakeFiles/SUKP.dir/main.cpp.obj CMakeFiles/SUKP.dir/load.cpp.obj CMakeFiles/SUKP.dir/solver.cpp.obj
+build SUKP.exe: CXX_EXECUTABLE_LINKER__SUKP_Debug CMakeFiles/SUKP.dir/main.cpp.obj CMakeFiles/SUKP.dir/load.cpp.obj CMakeFiles/SUKP.dir/solver.cpp.obj CMakeFiles/SUKP.dir/solution.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SUKP.dir
